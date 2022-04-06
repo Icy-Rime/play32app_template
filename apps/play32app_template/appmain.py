@@ -1,7 +1,7 @@
 import hal_screen, hal_keypad, utime
 from graphic import framebuf_console, framebuf_helper
 from play32sys import app
-from resource.font import get_font_8px
+from buildin_resource.font import get_font_8px
 FONT_8 = get_font_8px()
 console = framebuf_console.Console(
     hal_screen.get_framebuffer(), *hal_screen.get_size(),
@@ -11,6 +11,8 @@ console = framebuf_console.Console(
 )
 
 def main(app_name, *args, **kws):
+    hal_screen.init()
+    hal_keypad.init()
     # app_name is app`s dir name in fact.
     print("================")
     console.log("================")

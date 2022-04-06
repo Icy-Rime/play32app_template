@@ -1,11 +1,12 @@
 import os, sys
-PLAY32DEV_PATH = "D:\CODE\Python\play32_dev" # replace to your path
+PLAY32DEV_PATH = "/run/media/dreagonmon/Data/Code/Python/play32-dev" # replace to your path
+APP_NAME_ID = "play32app_template"
 sys.path.append(PLAY32DEV_PATH)
 import play32env
 if __name__ == "__main__":
-    current_app_dir_path = os.path.dirname(os.path.abspath(__file__))
-    app_name = play32env.setup(current_app_dir_path)
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    app_dir = os.path.join(app_dir, "apps")
     # >>>> init <<<<
-    from play32sys import app
-    app.run_app(app_name)
+    play32env.setup(app_dir)
     # >>>> test <<<<
+    play32env.start_app(APP_NAME_ID)
